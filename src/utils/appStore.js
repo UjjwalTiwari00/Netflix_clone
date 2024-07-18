@@ -1,13 +1,12 @@
-import {configureStore} from "@reduxjs/toolkit";
-import userSlice from "./userSlice";
-import  isLoginSlice  from "./isLoginSlice";
-const appStore=configureStore(
-    {
-        reducer:{
-            user:userSlice.reducer,
-            isLogin:isLoginSlice.reducer
-        }
-    }
-)
+import { configureStore } from "@reduxjs/toolkit";
+import userReducer from "./userSlice";
+
+
+const appStore = configureStore({
+  reducer: {
+    user: userReducer,
+ 
+  },
+});
 
 export default appStore;
