@@ -28,9 +28,7 @@ function Header() {
   }
 // todo::: here this function is for browser from login and from signup
   useEffect(()=>{
-    onAuthStateChanged(auth, (user) => {
-      console.log("this is user",user);
-    
+   const unsubscribe= onAuthStateChanged(auth, (user) => {    
       if (user) {
         const {uid,email,displayName} = user;
         dispatch(addUser({uid:uid,email:email,displayName:displayName}))
@@ -41,6 +39,8 @@ function Header() {
 
       }
     });
+
+    return()=>unsubscribe();
       },[])
   
   return (
