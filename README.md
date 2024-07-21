@@ -12,3 +12,6 @@ Currently, two official plugins are available:
 -implement Firebase to Authentication
 -build react redux store to Store user data when login
 -and when logout remove data
+-building a netflix home page
+-adding cards and background video
+-use tmdb apis to get data 
