@@ -1,24 +1,31 @@
-import React from 'react'
-import { useSelector } from 'react-redux'
-import VideosTitle from './VideosTitle';
-import useRandomNumber from '../hooks/useRandomNumber';
-import VideoTrailer from './VideoTrailer';
+import React from "react";
+import { useSelector } from "react-redux";
+import VideosTitle from "./VideosTitle";
+import useRandomNumber from "../hooks/useRandomNumber";
+import VideoTrailer from "./VideoTrailer";
+
 
 function MainContainer() {
-    let i=0;
-    const movies=useSelector((store)=>store.movies?.nowPlayingMovies)
+  let i = 0;
+  const movies = useSelector((store) => store.movies?.nowPlayingMovies);
 
-        i= useRandomNumber()
+  i = useRandomNumber();
 
-    if(!movies) return;
+  if (!movies) return;
 
-   const {overview,title,id} =movies[i];
+
+
+  const { overview, title, id } = movies[i];
   return (
     <div>
-        <VideosTitle Overview={overview} Title={title}/>
-        <VideoTrailer movieid={id}/>
+      <div>
+        <VideosTitle Overview={overview} Title={title} />
+        <VideoTrailer movieid={id} />
+      </div>
+      <div>
+      </div>
     </div>
-  )
+  );
 }
 
-export default MainContainer
+export default MainContainer;

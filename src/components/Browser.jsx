@@ -1,5 +1,5 @@
 import Header from './Header'
-
+import SecondaryContainer from "./SecondaryContainer";
 import useNowPlayingMovies from '../hooks/useNowPlayingMovies'
 import MainContainer from './MainContainer';
 export const Browser = () => {
@@ -19,6 +19,8 @@ export const Browser = () => {
        */}
        <div>
           <MainContainer/>
+          <SecondaryContainer/>
+
        </div>
     </div>
   )
