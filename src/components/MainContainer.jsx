@@ -23,6 +23,9 @@ function MainContainer() {
         <VideoTrailer movieid={id} />
       </div>
       <div>
+      <div>
+        
+      </div>
       </div>
     </div>
   );

@@ -1,26 +1,22 @@
 import Header from './Header'
 import SecondaryContainer from "./SecondaryContainer";
-import useNowPlayingMovies from '../hooks/useNowPlayingMovies'
 import MainContainer from './MainContainer';
-export const Browser = () => {
- 
-  useNowPlayingMovies();
 
+import usePopularMovies from '../hooks/usePopularMovies';
+import useUpcomingMovies from '../hooks/useUpcomingMovies';
+import useNowPlayingMovies from '../hooks/useNowPlayingMovies'
+
+export const Browser = () => {
+  useNowPlayingMovies();
+  usePopularMovies();
+  useUpcomingMovies();
+  
   return (
     <div>
       <Header/>
-      {/* 
-          mainvideocontainer
-            -videoTitle
-            -video
-            -movieList
-          -more movie list container
-
-       */}
        <div>
           <MainContainer/>
           <SecondaryContainer/>
-
        </div>
     </div>
   )
