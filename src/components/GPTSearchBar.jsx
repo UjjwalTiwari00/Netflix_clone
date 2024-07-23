@@ -6,13 +6,13 @@ import { addSUggestMovies } from "../utils/SuggestMovieSlice";
 
 const GPTSearchBar = () => {
   const searchText = useRef();
-  const dispatch=useDispatch()
+  const dispatch = useDispatch();
 
-  const fetchMovies= async (name)=>{
-    const data=await fetch('https://api.themoviedb.org/3/search/movie?query='+name+'&include_adult=false&language=en-US&page=1',options);
-    const json=await data.json();
+  const fetchMovies = async (name) => {
+    const data = await fetch('https://api.themoviedb.org/3/search/movie?query=' + name + '&include_adult=false&language=en-US&page=1', options);
+    const json = await data.json();
     return json.results;
-  }
+  };
 
   const HandleGeminiSearchClick = async () => {
     const GeminiQuery =
@@ -28,29 +28,26 @@ const GPTSearchBar = () => {
     const prompt = GeminiQuery;
 
     const result = await model.generateContent(prompt);
-    const Moviesdata=result.response.text().split(",")
+    const Moviesdata = result.response.text().split(",");
 
-    // todo:::: yaha pe MoviesSuggestionList me sab promise aynge to sare promise ko resolve krna hai so promise.all ka use akrnge 
-    const MoviesSuggestionList=Moviesdata.map((name)=>fetchMovies(name));
+    const MoviesSuggestionList = Moviesdata.map((name) => fetchMovies(name));
 
-    const SearchResultPromises=await Promise.all(MoviesSuggestionList)
+    const SearchResultPromises = await Promise.all(MoviesSuggestionList);
     console.log(SearchResultPromises);
 
-    dispatch(addSUggestMovies({moviename:Moviesdata,movieSearch:SearchResultPromises}));
-
+    dispatch(addSUggestMovies({ moviename: Moviesdata, movieSearch: SearchResultPromises }));
   };
 
-
   return (
-    <div className="pt-[5%] flex justify-center items-center ">
+    <div className="pt-5 flex justify-center items-center ">
       <form
-        className="grid grid-cols-12 w-1/2 bg-slate-800 rounded-lg"
+        className="grid grid-cols-1 sm:grid-cols-12 w-11/12 sm:w-1/2 bg-slate-800 rounded-lg"
         onSubmit={(e) => e.preventDefault()}
       >
         <input
           ref={searchText}
           type="text"
-          className="p-4 m-4 col-span-9 ml-20 rounded-lg"
+          className="p-4 m-4 col-span-9 ml-4 sm:ml-20 rounded-lg"
           placeholder="search for movies"
         />
 

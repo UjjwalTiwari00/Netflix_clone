@@ -50,11 +50,14 @@ function Header() {
 
       {user && (
         <div className="flex justify-center items-center">
-       <Link to='/GPTsearch'> <button className="mt-4 bg-pink-600 p-1 sm:p-2 rounded-full text-xs sm:text-base" >GPTsearch</button></Link>
-          <img className="w-10 sm:w-16 mt-2 mr-2" src={profile_pictures} alt="profile" />
+        <div className="flex justify-center items-center gap-5">
+           <img className="w-10 sm:w-16 mt-2 " src={profile_pictures} alt="profile" />
           <button className="mt-4 bg-orange-600 p-1 sm:p-2 rounded-full text-xs sm:text-base" onClick={signout}>
             Sign Out
           </button>
+          <Link to='/GPTsearch'> <button className="mt-4 bg-pink-600 p-1 sm:p-2 rounded-full text-xs sm:text-base" >GPTsearch</button></Link>
+        </div>
+         
         </div>
       )}
     </div>

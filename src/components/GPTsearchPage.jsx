@@ -1,53 +1,31 @@
-// import React from "react";
-// import { Link } from "react-router-dom";
-// import GPTSearchBar from "./GPTSearchBar";
-
-// const GPTsearchPage = () => {
-//   return (
-//     <div>
-//       <div className="absolute">
-//         <Link to={"/browser"}>
-//           {" "}
-//           <button className="bg-black z-10 absolute text-white m-10 ">
-//             Browse Movies
-//           </button>
-//         </Link>
-
-//         <img
-//           className="w-full h-full object-cover opacity"
-//           src="https://assets.nflxext.com/ffe/siteui/vlv3/fc164b4b-f085-44ee-bb7f-ec7df8539eff/d23a1608-7d90-4da1-93d6-bae2fe60a69b/IN-en-20230814-popsignuptwoweeks-perspective_alpha_website_large.jpg"
-//           alt="Background"
-//         />
-//       </div>
-//       <div className="absolute">
-//         <GPTSearchBar />
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default GPTsearchPage;
 import React from "react";
 import { Link } from "react-router-dom";
 import GPTSearchBar from "./GPTSearchBar";
 import { BG_URL } from "../constants/constant";
 import GPTSearchResult from "./GPTSearchResult";
+import { useDispatch } from "react-redux";
+import { removeSuggestMovies } from "../utils/SuggestMovieSlice";
+
 const GPTsearchPage = () => {
+  const dispatch=useDispatch()
+  const clearSuggestData=()=>{
+    dispatch(removeSuggestMovies());
+  }
   return (
     <>
-      <div className="fixed -z-10">
+      <div className="fixed -z-10 w-full h-full">
         <img className="w-full h-full object-cover" src={BG_URL} alt="logo" />
       </div>
-      <div>
+      <div className="p-4 sm:p-8">
         <Link to={"/browser"}>
-          <button className="col-span-3 m-4 py-2 px-2 bg-red-700 text-white rounded-lg">
+          <button className="m-4 py-2 px-2 bg-red-700 text-white rounded-lg" onClick={clearSuggestData}>
             Browse Movies
           </button>
         </Link>
       </div>
-      <div className="">
+      <div>
         <GPTSearchBar />
-        <GPTSearchResult/>
+        <GPTSearchResult />
       </div>
     </>
   );
