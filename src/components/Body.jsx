@@ -1,7 +1,8 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import Login from './Login'
 import  {Browser}  from './Browser'
-import {createBrowserRouter, RouterProvider} from 'react-router-dom'
+import {createBrowserRouter, createRoutesFromElements, Route, RouterProvider} from 'react-router-dom'
+import GPTsearchPage from './GPTsearchPage'
 
 
 export const Body = () => {
@@ -12,14 +13,13 @@ export const Body = () => {
     },
     {
       path:'/browser',
-      element:<Browser/>
+      element:<Browser/>,
+    },
+    {
+      path:'/GPTsearch',
+      element:<GPTsearchPage/>
     }
   ])
-
- 
-
-
-
   return (
     <div>
         <RouterProvider router={AppRouting}/>

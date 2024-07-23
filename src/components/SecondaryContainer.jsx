@@ -12,8 +12,8 @@ function SecondaryContainer() {
 
 
   return (
-    <div className="bg-black">
-      <div>
+    <div className="bg-black ">
+      <div className="-mt-36 pl-2 md:pl-12 relative z-20">
         <MovieList title={"Now Playing"} movie={movies} />
         <MovieList title={"Popular"} movie={movies1} />
         <MovieList title={"Upcoming Movies"} movie={movies2} />
