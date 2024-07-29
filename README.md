@@ -1,6 +1,9 @@
 # React + Vite
 
 https://moviesai.web.app/
+
+use email: ujjwal@gmail.com
+pass:Ujjwal@121890
  
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
