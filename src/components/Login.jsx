@@ -23,27 +23,30 @@ const Login = () => {
   const password = useRef(null);
 
   const onValidate = async () => {
-   
-    const message = checkValidData(email.current.value, password.current.value);
-    setFormError(message);
-     Setloading(true);
     //todoDone::: if my message have some error dont go for login or signup just disply the error and return otherwise signup and login
-    if (message) return;
-
+    // if (message) return;
+    // Setloading(true);
     // todoDone:: signUp logic from
     if (!isLogIn) {
+
+      const message = checkValidData(
+        email.current.value,
+        password.current.value
+      );
+      
+      setFormError(message);if (message) return;
+      Setloading(true);
       await createUserWithEmailAndPassword(
         auth,
         email.current.value,
         password.current.value
-        )
+      )
         .then((userCredential) => {
           // Signed up
           const user = userCredential.user;
           updateProfile(user, {
             displayName: name.current.value,
-          })
-          .then(() => {
+          }).then(() => {
             // todo::: yaha pe auth.currentUser issliye use kiya hia kyu ki pichla wala user upadated nahi hai ye wala updated hai
             const { uid, email, displayName } = auth.currentUser;
             dispatch(
@@ -53,7 +56,7 @@ const Login = () => {
                 displayName: displayName,
               })
             );
-          })
+          });
         })
         .catch((error) => {
           const errorCode = error.code;
@@ -63,6 +66,15 @@ const Login = () => {
     }
     //todoDone:: login logic
     else {
+
+      const message = checkValidData(
+        email.current.value,
+        password.current.value
+      );
+      
+      setFormError(message);if (message) return;
+      Setloading(true);
+
       await signInWithEmailAndPassword(
         auth,
         email.current.value,
@@ -77,6 +89,7 @@ const Login = () => {
           const errorCode = error.code;
           const errorMessage = error.message;
           setFormError(errorCode + " " + errorMessage);
+          Setloading(false);
         });
     }
     Setloading(false);

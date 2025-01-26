@@ -28,11 +28,15 @@ const GPTSearchBar = () => {
     const prompt = GeminiQuery;
 
     const result = await model.generateContent(prompt);
+
+
     const Moviesdata = result.response.text().split(",");
 
     const MoviesSuggestionList = Moviesdata.map((name) => fetchMovies(name));
 
     const SearchResultPromises = await Promise.all(MoviesSuggestionList);
+
+    
     console.log(SearchResultPromises);
 
     dispatch(addSUggestMovies({ moviename: Moviesdata, movieSearch: SearchResultPromises }));
